@@ -52,6 +52,7 @@ function App() {
   };
 
   return (
+    <div className='container'>
     <div className="app" style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <div
         className="chat-container"
@@ -128,6 +129,7 @@ function App() {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 }
