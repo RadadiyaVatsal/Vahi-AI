@@ -1,11 +1,18 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import axios for API requests
 
 function App() {
   const [query, setQuery] = useState(""); // User input
   const [conversation, setConversation] = useState([]); // List of questions and answers
   const [loading, setLoading] = useState(false); // Loading state
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    const name = prompt("Welcome! Please enter your name:");
+    if (name) {
+      setUserName(name);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,6 +59,18 @@ function App() {
   };
 
   return (
+    <>
+    <div 
+  className="d-flex justify-content-center align-items-center mb-5" 
+  style={{ height: "100px" }}
+>
+  <strong 
+    style={{ color: "green", textAlign: "center",  marginLeft:"500px"}}
+  >
+    Welcome {userName} to vahi-ai.... Feel free to ask anything
+  </strong>
+</div>
+
     <div className='container'>
     <div className="app" style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <div
@@ -131,6 +150,7 @@ function App() {
       </form>
     </div>
     </div>
+    </>
   );
 }
 
