@@ -65,9 +65,9 @@ function App() {
   style={{ height: "100px" }}
 >
   <strong 
-    style={{ color: "green", textAlign: "center",  marginLeft:"50% 50%"}}
+    style={{ color: "green", textAlign: "center",  marginLeft:"500px", fontSize:"30px"}}
   >
-    Welcome {userName} to vahi-ai.... Feel free to ask anything
+    Welcome {userName} to vahi-ai!! Feel free to ask anything
   </strong>
 </div>
 
