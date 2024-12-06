@@ -52,84 +52,49 @@ function App() {
   };
 
   return (
-    <div className='container'>
-    <div className="app" style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <div
-        className="chat-container"
-        style={{
-          maxWidth: "600px",
-          margin: "0 auto",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          padding: "10px",
-          boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-          backgroundColor: "#f9f9f9",
-          height: "500px",
-          overflowY: "auto",
-        }}
-      >
-        {/* Render conversation */}
-        {conversation.map((message, index) => (
-          <div
-            key={index}
-            style={{
-              display: "flex",
-              justifyContent: message.sender === "user" ? "flex-end" : "flex-start",
-
-            }}
-          >
+    <div className="container py-3">
+      <div className="app">
+        <div
+          className="chat-container p-3 border rounded shadow-sm bg-light"
+          style={{ height: "500px", overflowY: "auto" }}
+        >
+          {/* Render conversation */}
+          {conversation.map((message, index) => (
             <div
-              style={{
-                maxWidth: "70%",
-                padding: "10px",
-                borderRadius: "12px",
-                backgroundColor: message.sender === "user" ? "#d1e7dd" : "#e2e3e5",
-                color: message.sender === "user" ? "#0f5132" : "#495057",
-                textAlign: "left",
-                marginBottom:"10px"
-              }}
+              key={index}
+              className={`d-flex ${message.sender === "user" ? "justify-content-end" : "justify-content-start"}`}
             >
-              {message.text}
+              <div
+                className={`p-2 rounded mb-2 ${
+                  message.sender === "user" ? "bg-success text-white" : "bg-secondary text-white"
+                }`}
+                style={{ maxWidth: "70%" }}
+              >
+                {message.text}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-
-      <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <textarea
-            className="form-control"
-            rows="2"
-            placeholder="Type your question here..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            style={{
-              flex: 1,
-              padding: "10px",
-              borderRadius: "8px",
-              border: "1px solid #ddd",
-              marginRight: "10px",
-              resize: "none",
-            }}
-          />
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={loading}
-            style={{
-              padding: "10px 20px",
-              borderRadius: "8px",
-              backgroundColor: loading ? "#ccc" : "#007bff",
-              color: "#fff",
-              border: "none",
-              cursor: loading ? "not-allowed" : "pointer",
-            }}
-          >
-            {loading ? "Loading..." : "Send"}
-          </button>
+          ))}
         </div>
-      </form>
-    </div>
+
+        <form onSubmit={handleSubmit} className="mt-3">
+          <div className="d-flex justify-content-center align-items-center">
+            <textarea
+              className="form-control me-2"
+              rows="2"
+              placeholder="Type your question here..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Send"}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
